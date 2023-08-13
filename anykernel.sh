@@ -61,6 +61,25 @@ write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_
 # init_boot install
 #dump_boot; # unpack ramdisk since it is the new first stage init ramdisk where overlay.d must go
 
+## Get Android version (DO NOT CHANGE)
+# begin checker android version
+android_ver="$(file_getprop /system/build.prop ro.build.version.release)"
+
+# cleanup first
+patch_cmdline "androidboot.version" ""
+patch_cmdline "boottime.buffertimestamp" ""
+
+if [ ! -z "$android_ver" ]; then
+	patch_cmdline "androidboot.version" "androidboot.version=$android_ver"
+fi
+
+if [ "$android_ver" -lt "12" ]; then
+	patch_cmdline boottime.buffertimestamp boottime.buffertimestamp=0
+else
+	patch_cmdline boottime.buffertimestamp boottime.buffertimestamp=1
+fi
+#end checker android version
+
 #write_boot;
 ## end init_boot install
 
