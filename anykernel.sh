@@ -39,6 +39,9 @@ patch_vbmeta_flag=auto;
 # boot install
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
+# activate kernelsu by boot cmdline
+patch_cmdline kernelsu.enabled kernelsu.enabled=1
+
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
 ## end boot install
 
