@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=QuicksilveR kernel with KernelSU supported
+kernel.string=Neko kernel with KernelSU supported
 do.devicecheck=1
 do.modules=0
 do.systemless=1
