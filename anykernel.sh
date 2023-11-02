@@ -40,6 +40,9 @@ patch_vbmeta_flag=auto;
 # boot install
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 
+# activate updated nvt driver by boot cmdline
+patch_cmdline use_new_nvtouch use_new_nvtouch=1
+
 # activate kernelsu by boot cmdline
 patch_cmdline kernelsu.enabled kernelsu.enabled=1
 
